@@ -1,6 +1,7 @@
 #include <iostream>
 using namespace std;
 typedef char int8;
+typedef unsigned short int16;
 const int CODE_NUM = 8;
 int8 map[10000];
 unsigned int outmap[10000];
@@ -134,6 +135,7 @@ void encode_huffman(char *file_dir) {
 	fopen_s(&fp, file_dir, "wb");
 	int8 a = 3;
 	fwrite(&a, 1, 1, fp);
+
 	fclose(fp);
 }
 

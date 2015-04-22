@@ -5,13 +5,19 @@ using namespace std;
 #include "CHuffman.h"
 
 
-CHuffman::CHuffman()
+CHuffman::CHuffman(int src_size, int16 src_map[])
 {
+	map = new int16[src_size];
+	memcpy_s(map, src_size, src_map, src_size);
+	compute_freq(src_size);
+	compute_length();
+	generate_table();
 }
 
 
 CHuffman::~CHuffman()
 {
+	delete[] map;
 }
 
 template<typename T>
@@ -65,10 +71,22 @@ void CHuffman::go_down(int size, int k)
 	}
 }
 
+int CHuffman::count_bit(int16 num) {
+	if (num < 0) {
+		num = -num;
+	}
+	int cbit = 0;
+	while (num) {
+		num >>= 1;
+		cbit++;
+	}
+	return cbit;
+}
+
 void CHuffman::compute_freq(int size) {
 	memset(freq, 0, sizeof(freq));
 	for (int i = 0; i < size; i++) {
-		freq[map[i]]++;
+		freq[count_bit(map[i])]++;
 	}
 }
 
@@ -133,4 +151,36 @@ void CHuffman::generate_table() {
 	for (int i = CODE_NUM; i < CODE_NUM * 2; i++) {
 		buf[i - CODE_NUM] += firstcode[buf[i]];
 	}
+}
+
+int16* CHuffman::get_depth() {
+	int16 *depth = new int16[CODE_NUM];
+	for (int i = 0; i < CODE_NUM; i++) {
+		depth[i] = buf[i + CODE_NUM];
+	}
+	return depth;
+}
+
+void CHuffman::huffman_encode(char * file_name) {
+	FILE *fp;
+	fopen_s(&fp, file_name, "wb");
+//	int8 a = 3;
+//	fwrite(&a, 1, 1, fp);
+
+	fwrite(&buf[CODE_NUM], 2, CODE_NUM, fp);
+	memset(second_line, 0, sizeof(second_line));
+	int len;
+	int j = 0;
+	for (len = 1; len < 16; len++) {
+		for (int i = CODE_NUM; i < CODE_NUM * 2; i++) {
+			if (buf[i] == len) {
+				second_line[j++] = i - CODE_NUM;
+			}
+		}
+	}
+	fwrite(second_line, 2, j, fp);
+
+
+
+	fclose(fp);
 }
