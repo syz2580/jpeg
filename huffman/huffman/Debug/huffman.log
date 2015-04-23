@@ -1,0 +1,17 @@
+﻿生成启动时间为 2015/4/22 15:26:04。
+     1>项目“E:\Github\jpeg\huffman\huffman\huffman.vcxproj”在节点 2 上(Build 个目标)。
+     1>ClCompile:
+         E:\Microsoft VS\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt CHuffman.cpp huffman.cpp
+         huffman.cpp
+         CHuffman.cpp
+         正在生成代码...
+       Link:
+         E:\Microsoft VS\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"E:\Github\jpeg\huffman\Debug\huffman.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:\Github\jpeg\huffman\Debug\huffman.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\Github\jpeg\huffman\Debug\huffman.lib" /MACHINE:X86 Debug\CHuffman.obj
+         Debug\huffman.obj
+         LINK : 没有找到 E:\Github\jpeg\huffman\Debug\huffman.exe 或上一个增量链接没有生成它；正在执行完全链接
+         huffman.vcxproj -> E:\Github\jpeg\huffman\Debug\huffman.exe
+     1>已完成生成项目“E:\Github\jpeg\huffman\huffman\huffman.vcxproj”(Build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:05.09
