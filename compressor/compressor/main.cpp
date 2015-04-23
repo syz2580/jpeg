@@ -21,8 +21,8 @@ int main()
     std::cout.rdbuf(s_fout);
     
     //try_JfifWrite();
-    //try_JfifRead();
-    tryCompress();
+    try_JfifRead();
+    //tryCompress();
     
     std::cout.rdbuf(s_cout);
 

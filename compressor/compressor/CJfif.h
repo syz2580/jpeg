@@ -55,7 +55,7 @@ typedef struct _JFIF_DHT
     uint8 id;               //0x00, 0x01 for luma dc and ac; 0x10, 0x11
     uint8 bits[16];         //! count when depth is (i+1)
     uint8 *var;             //! var is the num_bits of data(uint8)
-    int size_var;           //!
+    int size_var;           //len - 19
 }JFIF_DHT;
 
 typedef struct _JFIF_SOS

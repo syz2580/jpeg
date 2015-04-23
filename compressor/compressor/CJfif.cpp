@@ -106,22 +106,22 @@ CJfif::~CJfif()
         delete[] data;
         data = 0;
     }
-    if (0 != DHT_Luma_dc.size_var)
+    if (0 != DHT_Luma_dc.var)
     {
         delete[] DHT_Luma_dc.var;
         DHT_Luma_dc.var = 0;
     }
-    if (0 != DHT_Luma_ac.size_var)
+    if (0 != DHT_Luma_ac.var)
     {
         delete[] DHT_Luma_ac.var;
         DHT_Luma_ac.var = 0;
     }
-    if (0 != DHT_Chroma_dc.size_var)
+    if (0 != DHT_Chroma_dc.var)
     {
         delete[] DHT_Chroma_dc.var;
         DHT_Chroma_dc.var = 0;
     }
-    if (0 != DHT_Chroma_ac.size_var)
+    if (0 != DHT_Chroma_ac.var)
     {
         delete[] DHT_Chroma_ac.var;
         DHT_Chroma_ac.var = 0;
@@ -284,6 +284,9 @@ void CJfif::ReadFile(const char* fileName)
         {
             ReadByte(dht[i]->bits[j]);
         }
+        dht[i]->size_var = dht[i]->len - 19;
+        dht[i]->var = new uint8[dht[i]->size_var];
+        ASSERT(0 != dht[i]->var);
         for (int j=0; j<dht[i]->size_var; j++)
         {
             ReadByte(dht[i]->var[j]);
