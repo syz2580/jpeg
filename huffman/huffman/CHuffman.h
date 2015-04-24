@@ -1,29 +1,26 @@
 #pragma once
 typedef char int8;
-typedef short int16;
-const int CODE_NUM = 16;
+typedef unsigned short int16;
+const int CODE_NUM = 256;
 class CHuffman
 {
 private:
 	
-	int16 *map;
-	int16 buf[CODE_NUM * 2];
-	int16 second_line[CODE_NUM];
+	unsigned int buf[CODE_NUM * 2];
+	//int16 second_line[CODE_NUM];
 	unsigned int freq[CODE_NUM];
 	unsigned int firstcode[CODE_NUM];
-	unsigned int num[33];
+	unsigned int num[257];
+	int code;
 	
 	template<typename T>
 	void swap(T &a, T &b);
 	void heap_insert(int size, int num);
 	void print_buf();
 	void go_down(int size, int k);
-	void compute_freq(int size);
 	void compute_length();
 	void generate_table();
 	
-	int count_bit(int16 num);
-
 public:
 	/*
 	* Initialize the huffman table with original data
@@ -31,17 +28,13 @@ public:
 	* src_map[]=> source map, to be encoded
 	*/
 	CHuffman(int src_size, int16 src_map[]);
-	~CHuffman();
 	/*
-	 *Get the depth information
-	 *Return a int[16] array
+	 * Get the depth of a certain index
 	 */
-	int16* get_depth();
-
+	int16 get_depth(int16 index);
 	/*
-	 * Encode a table into huffman form and save in a file
-	 * file_name=> the file name
+	 * Get the code of a certain index
 	 */
-	void huffman_encode(char *file_name);
+	int16 get_code(int16 index);
 };
 
